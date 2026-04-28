@@ -8,9 +8,10 @@ async function getDadosCep(cep) {
     return data
 }
 
-function preencherFormulario() {
+async function preencherFormulario() {
     const cep = document.getElementById('cep').value
-    const dadosCep = getDadosCep(cep)
+    const dadosCep = await getDadosCep(cep)
+    document.getElementById('endereco').value = dadosCep.logradouro
 }
 
 document.getElementById('cep').addEventListener('focusout', preencherFormulario)
